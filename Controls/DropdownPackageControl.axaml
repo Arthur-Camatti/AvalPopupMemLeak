@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="using:AvaloniaMemLeak.Controls"
+             xmlns:vm="using:AvaloniaMemLeak.ViewModels"
+             mc:Ignorable="d"
+             d:DesignWidth="120" d:DesignHeight="32"
+             x:CompileBindings="True"
+             x:DataType="vm:PackageViewModel"
+             x:Class="AvaloniaMemLeak.Controls.DropdownPackageControl">
+    
+    <UserControl.Styles>
+        <Style Selector="my|DropdownPackageControl">
+            <Setter Property="Background" Value="Purple"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="MinHeight" Value="28"/>
+        </Style>
+    </UserControl.Styles>
+    
+    <Grid MinWidth="{Binding $parent[UserControl].MinWidth}"
+          Width="{Binding $parent[UserControl].Width}"
+          MinHeight="{Binding $parent[UserControl].MinHeight}"
+          Height="{Binding $parent[UserControl].Height}">
+        <TextBlock Text="My my~~"/>
+    </Grid>
+</UserControl>

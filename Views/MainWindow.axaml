@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaMemLeak.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:my="clr-namespace:AvaloniaMemLeak.Controls"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+        x:DataType="vm:MainViewModel"
+        x:Class="AvaloniaMemLeak.Views.MainWindow"
+        Title="AvaloniaMemLeak">
+    <Panel Background="WhiteSmoke">
+        <Button x:Name="PART_footer_selectButton"
+                Padding="7"
+                Background="Blue"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            Press me
+        </Button>
+        <Popup x:Name="PART_footer_selectPopup"
+               IsLightDismissEnabled="True"
+               PlacementTarget="{Binding #PART_footer_selectButton}">
+            <ScrollViewer Background="Yellow">
+                <ItemsControl ItemsSource="{Binding PackageViewModels, Mode=OneWay}"
+                              Padding="1"
+                              Margin="1" x:CompileBindings="True">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="vm:PackageViewModel">
+                            <my:DropdownPackageControl x:DataType="vm:PackageViewModel"
+                                                       DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Popup>
+    </Panel>
+</Window>
